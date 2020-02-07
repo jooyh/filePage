@@ -1,0 +1,372 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> -->
+    <title>메인</title>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <script src="./lib/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div id="container">
+    <header>
+        <ul class="route-list">
+            <li>1dep</li>
+            <li>2dep</li>
+            <li>3dep</li>
+            <li>4dep</li>
+            <li>5dep</li>
+            <li>6dep</li>
+        </ul>
+    </header>
+    
+    <div class="content">
+        <div class="directory-wrapper">
+            <div class="directory-wrap">
+                <ul class="directory-list">
+                    <li>
+                        <span class="deps open">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps open">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                        <ul>
+                                            <li>
+                                                <span class="deps">4dep</span>
+                                                <ul>
+                                                    <li>
+                                                        <span class="deps">5dep</span>
+                                                        <ul>
+                                                            <li>
+                                                                <span class="deps">6dep</span>
+                                                                <ul>
+                                                                    <li>
+                                                                        <span class="deps">7dep</span>
+                                                                        <ul>
+                                                                            <li>
+                                                                                <span class="deps">8dep</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="deps">8dep</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </li>
+                                                                </ul>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <span class="deps">5dep</span>
+                                                    </li>
+                                                </ul>
+                                                
+                                            </li>
+                                            <li>
+                                                <span class="deps">4dep</span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span class="deps">2dep</span>
+                            </li>
+                            <li>
+                                <span class="deps">2dep</span>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                        <ul>
+                            <li>
+                                <span class="deps">2dep</span>
+                                <ul>
+                                    <li>
+                                        <span class="deps">3dep</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span class="deps">1dep</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="file-item-box">
+                <div class="file-item type-folder">
+                    <span class="item-name">폴더</span>
+                </div>
+                <div class="file-item type-folder">
+                    <span class="item-name">폴더</span>
+                </div>
+                <div class="file-item type-folder">
+                    <span class="item-name">폴더</span>
+                </div>
+                <div class="file-item type-default">
+                    <span class="item-name">디폴트 파일</span>
+                </div>
+                <div class="file-item type-default">
+                    <span class="item-name">디폴트 파일</span>
+                </div>
+                <div class="file-item type-default">
+                    <span class="item-name">디폴트 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+                <div class="file-item type-img">
+                    <span class="item-name">이미지 파일</span>
+                </div>
+                <div class="file-item type-document">
+                    <span class="item-name">문서 파일</span>
+                </div>
+            </div>
+            <!-- 파일업로드버튼 -->
+            <div class="file-input-box">
+                <input type="file" class="file-upload"/>
+            </div>
+        </div>
+    </div>
+    <div class="tooltip-wrapper" style="display:none;">
+        <div class="tooltip-wrap">
+            <div class="name">파일명 나오게 할람 요기에 요기에 요기요.html</div>
+            <ul class="list">
+                <li>삭제</li>
+                <li>상세?</li>
+                <li>또무얼하고싶은가?</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <span class="total"><strong class="num">20</strong> 개 항목</span>
+    </footer>
+</div>
+
+<script>
+    $(function(){
+        /* 디렉토리컨텐츠 여백 조정 */
+        var headerHeight = $("header").outerHeight();
+        $(".directory-wrapper").css("padding-top",headerHeight);
+
+        /* tooltip 우클릭 이벤트 */
+        $(document).on("mousedown", function(e) {
+            // alert(e.which); // 1:좌클릭, 2:휠클릭, 3:우클릭   // 신기방기
+            var windowWidth = $(window).width();
+            var windowHeight = $(window).height();
+            var tooltipWidth = $(".tooltip-wrapper").width(); 
+            var tooltipHeight = $(".tooltip-wrapper").height(); 
+            if (e.which == 3) {
+                if ($(e.target).hasClass("file-item") || $(e.target).hasClass("item-name")) {
+                    x = event.pageX;
+                    y = event.pageY; 
+                    $(".tooltip-wrapper").css({
+                        display : "block",
+                        top : y,
+                        left : x
+                    })
+                    if(tooltipWidth + x > windowWidth){
+                        $(".tooltip-wrapper").css( "left" , x - tooltipWidth )
+                    } 
+                    if(tooltipHeight + y > windowHeight){
+                        $(".tooltip-wrapper").css( "top" , y - tooltipHeight )
+                    } 
+
+                }
+            } else {
+                $(".tooltip-wrapper").hide();
+            }
+        });
+        /* 기본 우클릭 제거 */
+        $(document).on("contextmenu",function(e){
+            // console.log("c"+e);
+            return false;
+        });
+
+    })
+
+
+
+    // var test = $('#test');
+    // test.click(function (event) {
+    // x = event.pageX;
+    // y = event.pageY; 
+    // alert('x좌표:' +x + ', y좌표:' + y);
+    // })
+</script>
+
+</body>
+</html>
