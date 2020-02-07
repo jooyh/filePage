@@ -40,8 +40,16 @@ function mkRow(data){
 		    </li>
 		    `
 	}
+	if(html.length == 0){
+		html = `
+			<li class="check-item">
+                <div class="check-input-box" style="text-align: center;">
+					요청된 파일이 없습니다.
+                </div>
+            </li>
+		`;
+	}
 	$("#delReqList").empty().append(html);
-
 }
 
 function getTypeClass(mimeType){

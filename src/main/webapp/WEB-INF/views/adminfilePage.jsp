@@ -39,29 +39,7 @@
                             </div>
                         </li>
                 	</ul>
-                    <ul class="check-list" id="delReqList">
-                        <li class="check-item">
-                            <div class="check-input-box">
-                                <input type="checkbox" id="check01"/>
-                                <label for="check01">
-                                    <!--
-                                        폴더 type-folder
-                                        디폴드 type-default
-                                        이미지 type-img
-                                        문서 type-document
-                                    -->
-                                    <span class="sub-txt name type-folder">
-                                        파일명 나오게 할람 요기에 요기에 요기요.html
-                                        파일명 나오게 할람 요기에 요기에 요기요.html
-                                        파일명 나오게 할람 요기에 요기에 요기요.html
-                                        파일명 나오게 할람 요기에 요기에 요기요.html
-                                    </span>
-                                    <span class="sub-txt volume">나는야 용량 나는야 용량 나는야 용량</span>
-                                    <span class="sub-txt date">18 : 37</span>
-                                </label>
-                            </div>
-                        </li>
-                    </ul>
+                    <ul class="check-list" id="delReqList"></ul>
                 </div>
             </div>
         </div>
