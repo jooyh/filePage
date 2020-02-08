@@ -26,7 +26,7 @@ public class FileUtil{
 		if(dir == null || "".equals(dir)) {
 			dir = BASE_DIR;
 		}
-		// ÇÏÀ§ µð·ºÅä¸®
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ä¸®
         for (File info : new File(dir).listFiles()) {
         	Path source = Paths.get(info.getAbsolutePath()+info.getName());
         	String mimeType = Files.probeContentType(source);
@@ -55,7 +55,7 @@ public class FileUtil{
 		System.out.println("TEST::"+path);
 		for(MultipartFile mf : fileList) {
 			File file = new File(path + mf.getOriginalFilename());
-		    if (file.exists()){ //fileÁßº¹Ã¼Å©
+		    if (file.exists()){ //fileï¿½ßºï¿½Ã¼Å©
 		    	file = new File(path + System.currentTimeMillis() + "_" + mf.getOriginalFilename());
 		    }
 			mf.transferTo(file);
@@ -70,9 +70,9 @@ public class FileUtil{
 		for(Map reqInfo : reqInfoList) {
 			String path = (String) reqInfo.get("reqFilePath");
 			File file = new File(path);
-			if( file.exists() ){ //ÆÄÀÏÁ¸Àç¿©ºÎÈ®ÀÎ
+			if( file.exists() ){ //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç¿©ï¿½ï¿½È®ï¿½ï¿½
 				if(file.delete()){
-					System.out.println("ÆÄÀÏ»èÁ¦ ¼º°ø");
+					System.out.println("ï¿½ï¿½ï¿½Ï»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 					rsltMap.put("CODE","SUCC");
 				}else{
 //					unDeletedInfo.add(reqInfo);

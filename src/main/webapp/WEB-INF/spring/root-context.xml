@@ -12,7 +12,6 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
-    <context:property-placeholder location="classpath:config/path.properties"/>
-    
+	<context:property-placeholder location="/WEB-INF/*.properties" /> 
+
 </beans>

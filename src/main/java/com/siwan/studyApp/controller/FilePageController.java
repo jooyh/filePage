@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.siwan.studyApp.service.FilePageService;
 import com.siwan.studyApp.utils.FileUtil;
+import com.siwan.studyApp.utils.FtpUtil;
 
 @Controller
 public class FilePageController extends BaseController{
@@ -27,6 +28,9 @@ public class FilePageController extends BaseController{
 
 	@Autowired
 	FileUtil fileUtil;
+	
+	@Autowired
+	FtpUtil ftpUtil;
 
 	@RequestMapping("/filePage")
 	public String locateFilePage(HttpServletRequest request) {
@@ -37,13 +41,21 @@ public class FilePageController extends BaseController{
 		return "adminfilePage";
 	}
 
+//	@RequestMapping("/getDir.do")
+//	@ResponseBody
+//	public Map getDir(HttpServletRequest request) throws IOException {
+//		Map params = getParams(request);
+//		String dir = (String) params.get("dir");
+//		String isFirst = (String) params.get("isFirst");
+//		return fileUtil.getDrictory(dir);
+//	}
+	
 	@RequestMapping("/getDir.do")
 	@ResponseBody
 	public Map getDir(HttpServletRequest request) throws IOException {
 		Map params = getParams(request);
 		String dir = (String) params.get("dir");
-		String isFirst = (String) params.get("isFirst");
-		return fileUtil.getDrictory(dir);
+		return ftpUtil.getFileInFtp(dir);
 	}
 
 	@RequestMapping("/uploadFile.do")
@@ -51,9 +63,19 @@ public class FilePageController extends BaseController{
 	public String uploadFile(MultipartHttpServletRequest  mpRequest) throws IOException {
 		List<MultipartFile> fileList = mpRequest.getFiles("file");
 		String path = mpRequest.getParameter("path");
-		fileUtil.fileUpload(fileList,path);
+		ftpUtil.uploadInFtp(fileList,path);
 		return "SUCC";
 	}
+	
+	/*@RequestMapping("/uploadFile.do")
+	@ResponseBody
+	public String uploadFile(MultipartHttpServletRequest  mpRequest) throws IOException {
+		List<MultipartFile> fileList = mpRequest.getFiles("file");
+		String path = mpRequest.getParameter("path");
+		fileUtil.fileUpload(fileList,path);
+		return "SUCC";
+	}*/
+	
 	@RequestMapping("/delReauest.do")
 	@ResponseBody
 	public Map delReauest(HttpServletRequest request) throws IOException {

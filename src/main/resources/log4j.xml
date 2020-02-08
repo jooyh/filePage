@@ -12,7 +12,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.siwan.studyApp">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- Query Loggers --> 

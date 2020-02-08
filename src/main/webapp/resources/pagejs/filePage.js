@@ -125,11 +125,11 @@ function getDir(trgDirCls,dir,isFirst){
 
 		if(isOpen){ // 열려있는경우 -> 닫기
 			$(el).removeClass("open");
-			var dirList = dirInfo.path.split("\\");
+			var dirList = dirInfo.path.split("/");
 			dirList.pop();
 			var dir = "";
 			for(var i in dirList){
-				dir += dirList[i]+"\\";
+				dir += dirList[i]+"/";
 			}
 			setPathUI(dir);
 			getDir($(el).parent("li").parent("li"),dir);
@@ -147,7 +147,7 @@ function getDir(trgDirCls,dir,isFirst){
 	}
 
 	function setPathUI(dirPath){
-		var dirList = dirPath.split("\\");
+		var dirList = dirPath.split("/");
 		var html = ``;
 		for(var i in dirList){
 			html += `<li> ${dirList[i]} </li>`;
@@ -157,7 +157,7 @@ function getDir(trgDirCls,dir,isFirst){
 	}
 
 	function uploadFile(fileEl){
-	    var uploadPath = $(".route-list").attr("data-path")+"\\";
+	    var uploadPath = $(".route-list").attr("data-path")+"/";
 		fileTransaction({
 			 fileEl : fileEl
 			,path : uploadPath

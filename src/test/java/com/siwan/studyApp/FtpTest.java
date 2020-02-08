@@ -2,10 +2,16 @@ package com.siwan.studyApp;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.net.PrintCommandListener;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPFileFilters;
 import org.apache.commons.net.ftp.FTPReply;
 import org.junit.Test;
 
@@ -18,23 +24,23 @@ public class FtpTest {
         ftp = new FTPClient();
         ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         int reply;
-        ftp.connect(host);//È£½ºÆ® ¿¬°á
+        ftp.connect(host);//È£ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         reply = ftp.getReplyCode();
         if (!FTPReply.isPositiveCompletion(reply)) {
             ftp.disconnect();
             throw new Exception("Exception in connecting to FTP Server");
         }
-        ftp.login(user, pwd);//·Î±×ÀÎ
+        ftp.login(user, pwd);//ï¿½Î±ï¿½ï¿½ï¿½
         ftp.setFileType(FTP.BINARY_FILE_TYPE);
         ftp.enterLocalPassiveMode();
         return ftp;
     }
-    //param( º¸³¾ÆÄÀÏ°æ·Î+ÆÄÀÏ¸í, È£½ºÆ®¿¡¼­ ¹ŞÀ» ÆÄÀÏ ÀÌ¸§, È£½ºÆ® µğ·ºÅä¸® )
+    //param( ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ï¿½+ï¿½ï¿½ï¿½Ï¸ï¿½, È£ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½, È£ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ä¸® )
 //    public void uploadFile(String localFileFullName, String fileName, String hostDir)
 //            throws Exception {
 //        try(InputStream input = new FileInputStream(new File(localFileFullName))){
 //        this.ftp.storeFile(hostDir + fileName, input);
-//        //storeFile() ¸Ş¼Òµå°¡ Àü¼ÛÇÏ´Â ¸Ş¼Òµå
+//        //storeFile() ï¿½Ş¼Òµå°¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ş¼Òµï¿½
 //        }
 //    }
 
@@ -53,7 +59,28 @@ public class FtpTest {
     public void connectionTest() throws Exception {
     	System.out.println("Start");
     	FTPClient ftp = FTPUploader("183.111.174.35", "zoz7184", "qwe123@@");
-    	System.out.println("STATUS ::>"+ftp.getStatus());
+    	ftp.getStatus();
+    	List<Map> fileList = new ArrayList();
+    	List<Map> dirList = new ArrayList();
+        
+        FTPFile[] ftpfiles = ftp.listFiles("/www", new FTPFileFilters().ALL);  // public í´ë”ì˜ ëª¨ë“  íŒŒì¼ì„ list í•©ë‹ˆë‹¤
+        if (ftpfiles != null) {
+            for (int i = 0; i < ftpfiles.length; i++) {
+                FTPFile file = ftpfiles[i];
+                Map map = new HashMap();
+                map.put("fileNm", file.getName());
+                map.put("fileSize", file.getSize());
+                if(file.getType() == 1) {
+                	dirList.add(map);
+                }else {
+                	fileList.add(map);
+                }
+                System.out.println(file.toString());  // file.getName(), file.getSize() ë“±ë“±..
+            }
+        }
+        
+        System.out.println(fileList.toString());
+        System.out.println(dirList.toString());
     	disconnect();
         System.out.println("Done");
     }
