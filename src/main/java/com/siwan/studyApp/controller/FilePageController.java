@@ -1,6 +1,5 @@
 package com.siwan.studyApp.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.siwan.studyApp.service.FilePageService;
 import com.siwan.studyApp.utils.FileUtil;
@@ -84,13 +82,19 @@ public class FilePageController extends BaseController{
 	}
 
 	@RequestMapping("/fileDownload.do")
-	public ModelAndView download(@RequestParam("path")String path) {
-		logger.info("@@@@@@@@@@@@@@@FileDown(1) START@@@@@@@@@@@@@@@");
-		logger.info(path);
-		File file = new File(path);
-		logger.info("@@@@@@@@@@@@@@@FileDown(1) END@@@@@@@@@@@@@@@");
-		return new ModelAndView("download", "downloadFile", file);
+	@ResponseBody
+	public void download(@RequestParam("path")String path) {
+//		logger.debug(path);
+		ftpUtil.downloadInFtp(path);
 	}
+//	@RequestMapping("/fileDownload.do")
+//	public ModelAndView download(@RequestParam("path")String path) {
+//		logger.info("@@@@@@@@@@@@@@@FileDown(1) START@@@@@@@@@@@@@@@");
+//		logger.info(path);
+//		File file = new File(path);
+//		logger.info("@@@@@@@@@@@@@@@FileDown(1) END@@@@@@@@@@@@@@@");
+//		return new ModelAndView("download", "downloadFile", file);
+//	}
 
 	@RequestMapping("/getDelReqList.do")
 	@ResponseBody

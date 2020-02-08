@@ -1,8 +1,7 @@
 package com.siwan.studyApp.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -25,17 +24,16 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FtpUtil {
 
-	FTPClient ftp = null;
 	private static final String BASE_DIR = "/www";
 	private static final String HOST_URL = "183.111.174.35";
 	private static final String HOST_ID = "zoz7184";
 	private static final String HOST_PW = "qwe123@@";
+	private static final String DOWNLOAD_DIR = "/Users/yeonghyeonju/Downloads/download_test/";
 	
 	protected static final Logger logger = LoggerFactory.getLogger(FtpUtil.class);
 	
-	
 	public FTPClient connection(String host, String user, String pwd) throws Exception{
-        ftp = new FTPClient();
+		FTPClient ftp = new FTPClient();
         ftp.addProtocolCommandListener(new PrintCommandListener(new PrintWriter(System.out)));
         int reply;
         ftp.connect(host);
@@ -50,11 +48,12 @@ public class FtpUtil {
         return ftp;
     }
 	
-	public void disconnect(){
-        if (this.ftp.isConnected()) {
+	public void disconnect(FTPClient ftp){
+		if (ftp == null) return;
+        if (ftp.isConnected()) {
             try {
-                this.ftp.logout();
-                this.ftp.disconnect();
+                ftp.logout();
+                ftp.disconnect();
             } catch (IOException f) {
                 f.printStackTrace();
             }
@@ -63,7 +62,7 @@ public class FtpUtil {
 	
 	public Map getFileInFtp(String path) {
 		Map rtnMap = new HashMap();
-		FTPClient ftp;
+		FTPClient ftp = null;
 		List<Map> fileList = null;
 		List<Map> dirList = null;
 		if(path == null ) path = BASE_DIR;  
@@ -92,7 +91,7 @@ public class FtpUtil {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			disconnect();
+			disconnect(ftp);
 		}
 		rtnMap.put("fileList", fileList);
 		rtnMap.put("dirList", dirList);
@@ -101,27 +100,46 @@ public class FtpUtil {
 	}
 	
 	public void uploadInFtp(List<MultipartFile> fileList , String hostDir) {
-		Map rtnMap = new HashMap();
+		FTPClient ftp = null;
 		try {
 			ftp = connection(HOST_URL,HOST_ID,HOST_PW);
 			InputStream input;
-			try {
-				for(MultipartFile file : fileList) {
-					input = file.getInputStream();
-					logger.debug("TEST",ftp.list(hostDir + file.getOriginalFilename()));
-					ftp.storeFile(hostDir + file.getOriginalFilename(), input);
-				}
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				throw e;
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				throw e;
+			for(MultipartFile file : fileList) {
+				input = file.getInputStream();
+				logger.debug("TEST",ftp.list(hostDir + file.getOriginalFilename()));
+				ftp.storeFile(hostDir + file.getOriginalFilename(), input);
 			}
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 		} finally {
-			disconnect();
+			disconnect(ftp);
+		}
+	}
+	
+	public void downloadInFtp(String path) {
+		FTPClient ftp = null;
+		
+		String [] splited = path.split("/");
+		String fileName = splited[splited.length-1];
+		String dri = path.replace(fileName, "");
+		
+		try {
+			ftp = connection(HOST_URL,HOST_ID,HOST_PW);
+			ftp.changeWorkingDirectory(dri);
+			File f = new File(DOWNLOAD_DIR,fileName);
+			FileOutputStream fos = null;
+			fos = new FileOutputStream(f);
+			boolean isSuccess = ftp.retrieveFile(fileName, fos);
+			if (isSuccess) {
+				// 다운로드 성공
+			} else {
+				// 다운로드 실패
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			disconnect(ftp); 
 		}
 	}
 }
